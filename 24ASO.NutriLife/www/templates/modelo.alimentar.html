@@ -1,0 +1,24 @@
+<ion-view view-title="{{ modelo.refeicaoNome }}">
+    <ion-content>
+        <div class="ui message margin-10-10">
+            <h4 class="ui center aligned icon header">
+                <i class="{{ modelo.icon }} font-amarelo icon"></i>
+                Sugestões para o {{ modelo.refeicaoNome }}
+            </h2>
+            <h5 class="ui center aligned">Confira abaixa algumas sugestões apropriadas para o seu {{ modelo.refeicaoNome }}.</h5>
+        </div>
+        <div class="ui middle aligned divided list">
+            <div class="item padding-10-10" ng-repeat="item in modelo.itens">
+                <div class="content">
+                    <div class="right floated content" ng-if="item.button">
+                        <button class="mini ui button" ng-click="comprar()">
+                            Comprar!
+                        </button>
+                    </div>
+                    <div class="header">{{item.nome}}</div>
+                    <small>{{item.calorias}} kcal</small>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

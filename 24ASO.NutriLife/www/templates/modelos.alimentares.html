@@ -1,0 +1,18 @@
+<ion-view view-title="Modelos alimentares">
+    <ion-content class="padding">
+            <div class="ui">
+                <div class="content">
+                    <div class="column">
+                        <div class="ui card" ng-repeat="modelo in modelos">
+                            <a class="image" href="#/app/modelo-alimentar/{{modelo.id}}">
+                                <img ng-src="{{ modelo.refeicaoImagem }}">
+                            </a>
+                            <div class="content">
+                                <a class="header">{{ modelo.refeicaoNome }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>

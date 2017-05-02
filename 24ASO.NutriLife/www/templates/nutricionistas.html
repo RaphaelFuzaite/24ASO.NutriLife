@@ -1,0 +1,22 @@
+<ion-view view-title="Nutricionistas">
+    <ion-content>
+        <div class="content-mapa" ng-class="{'remove-background':!pesquisar.status}">
+            <div class="ui icon input">
+              <i class="search icon"></i>
+              <input type="text" placeholder="Pesquisar" ng-click="pesquisar.acao()" ng-model="pesquisar.label">
+            </div>
+        </div>
+        <div class="ui big active centered inline loader" ng-show="pesquisar.loading"></div>
+        <div class="ui middle aligned divided list" ng-show="pesquisar.status">
+            <div class="item padding-10-10" ng-click="detalhes(nutricionista.id)" ng-repeat="nutricionista in nutricionistas">
+                <img class="ui avatar image" ng-src="{{nutricionista.imagem}}">
+                <div class="content">
+                    <div class="header">
+                      {{nutricionista.nome | uppercase}}
+                    </div>
+                    <small>CRN {{ nutricionista.crn }} - {{ nutricionista.uf }} <a ng-if="nutricionista.proprio" class="ui mini yellow label right floated">Última consulta</a></small>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

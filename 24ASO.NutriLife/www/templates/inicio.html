@@ -1,0 +1,55 @@
+<ion-view view-title="NutriLife">
+    <ion-content class="padding">
+        <div class="ui">
+            <div class="content">
+                <div class="column">
+                    <div class="ui card">
+                        <a class="image" href="#/app/modelos-alimentares/{{ inicio.id }}">
+                            <div class="image-home" style="background-image: url({{ inicio.refeicaoImagem }})"></div>
+                        </a>
+                        <div class="content">
+                            <a class="header">Modelo alimentar</a>
+                            <div class="meta">
+                            <a>Próxima refeição ({{ inicio.refeicaoNome }})</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui card">
+                        <a class="image" href="#/app/nutricionistas">
+                            <div class="image-home" style="background-image: url(img/nutricionista.jpg)"></div>
+                        </a>
+                        <div class="content">
+                            <a class="header" href="#">Buscar nutriocionistas</a>
+                            <div class="meta">
+                            <a>Encontre e avalie nutriocionistas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui card">
+                        <a class="image">
+                            <div class="image-home" style="background-image: url(img/agua.jpg)"></div>
+                        </a>
+                        <div class="content">
+                            <a class="header">Hidratação</a>
+                            <div class="meta">
+                            <a>Você bebeu 4 de 8 copos hoje</a>
+                            </div>
+                            <div class="ui small active teal progress" id="copo-de-agua" data-value="4" data-total="8">
+                                <div class="bar">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer content-transparent">
+        <div class="title">
+            <div class="rounded-button bg-vermelho font-branco" ng-click="registrarRefeicao()">
+                <i class="photo icon"></i>
+            </div>
+        </div>
+    </div>
+</ion-view>

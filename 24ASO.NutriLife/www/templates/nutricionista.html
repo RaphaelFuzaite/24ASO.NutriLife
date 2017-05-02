@@ -1,0 +1,44 @@
+﻿<ion-view view-title="Nutricionista">
+    <ion-content class="padding">
+
+        <div class="ui card">
+            <div class="image">
+                <img ng-src="{{ nutricionista.imagem }}">
+            </div>
+            <div class="content">
+                <a class="header">{{ nutricionista.nome | uppercase }}</a>
+                <div class="meta">
+                    <span class="date">{{ nutricionista.atualizacao | date }}</span>
+                    <span>CRN {{ nutricionista.crn }} - {{ nutricionista.uf }}</span>
+                    <div ng-if="nutricionista.proprio">
+                        <a class="ui yellow label">Última consulta</a>
+                    </div>
+                </div>
+                <div class="description">
+                    <div class="ui huge star rating"></div>
+                </div>
+            </div>
+            <div class="extra content">
+                <a>
+                    <i class="user icon"></i>
+                    {{ nutricionista.pacientes }}
+                </a>
+            </div>
+        </div>
+
+        <div class="ui raised segments">
+            <div class="ui segment">
+                <h4>Informações</h4>
+                <p>{{ informacoes }}</p>
+            </div>
+            <div class="ui segment">
+                <h4>Especialidades</h4>
+                <p>{{ especialidades }}</p>
+            </div>
+            <div class="ui segment">
+                <h4>Localização</h4>
+                <p>{{ localizacao }}</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
