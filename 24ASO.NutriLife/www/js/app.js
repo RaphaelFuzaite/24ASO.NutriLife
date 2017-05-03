@@ -55,11 +55,21 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
+    .state('app.refeicao', {
+        url: '/refeicoes/:refeicaoId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/refeicao.html',
+                controller: 'RefeicoesCtrl'
+            }
+        }
+    })
     .state('app.recomendacoes', {
         url: '/recomendacoes',
         views: {
             'menuContent': {
-                templateUrl: 'templates/recomendacoes.html'
+                templateUrl: 'templates/recomendacoes.html',
+                controller: 'RecomendacoesCtrl'
             }
         }
     })

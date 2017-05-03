@@ -1,5 +1,26 @@
 <ion-view view-title="Últimas refeições">
     <ion-content>
-        ÚLTIMAS REFEIÇÕES
+        <div class="ui middle aligned divided list">
+            <div class="item padding-10-10" ng-click="detalhes(refeicao.id)" ng-repeat="refeicao in refeicoes.itens | filter:{ mes: refeicoes.mesAtual.indice }">
+                <img class="ui avatar image" ng-src="{{refeicao.imagem}}" style="height: 4em; width: 4em;"/>
+                <div class="content">
+                    <h3 class="header">
+                      {{ refeicao.nome | uppercase }}
+                    </h3>
+                    <h6>{{ refeicao.data | date:'dd-MM-yyyy HH:mm' }}</h6>
+                </div>
+            </div>
+        </div>
     </ion-content>
+    <div class="tabs tabs-icon-only">
+        <a class="tab-item" ng-click="refeicoes.mesAtual.voltar()">
+            <i class="icon ion-arrow-left-c"></i>
+        </a>
+        <span class="tab-item">
+            {{ refeicoes.mesAtual.valor | date:'MM-yyyy' }}
+        </span>
+        <a class="tab-item" ng-click="refeicoes.mesAtual.avancar()">
+            <i class="icon ion-arrow-right-c"></i>
+        </a>
+    </div>
 </ion-view>
