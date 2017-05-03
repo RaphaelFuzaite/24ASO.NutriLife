@@ -1,0 +1,31 @@
+<ion-view view-title="Refeição">
+    <ion-content class="padding">
+
+        <div class="ui card">
+            <div class="image">
+                <img ng-src="{{ refeicao.imagem }}">
+            </div>
+            <div class="content">
+                <a class="header">{{ refeicao.nome | uppercase }}</a>
+                <div class="meta">
+                    <h5 class="date">{{ refeicao.data | date }}</h5>
+                </div>
+                <div class="description">
+                    <div class="ui huge star rating"></div>
+                </div>
+            </div>
+            <div class="extra content">
+                {{ refeicao.kcal }} kcal
+            </div>
+        </div>
+
+        <div class="ui raised segments">
+            <div class="ui segment">
+                <h4>Composição</h4>
+            </div>
+            <div class="ui segment" ng-repeat="info in refeicao.infos track by $index">
+                <h5>{{ info }}</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
