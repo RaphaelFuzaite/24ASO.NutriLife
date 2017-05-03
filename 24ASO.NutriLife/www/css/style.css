@@ -1300,8 +1300,7 @@ svg text.icon {
 }
 
 .content-mapa {
-    background-image: url(/img/mapa.jpg);
-    height: 260px;
+    height: 310px;
     background-size: contain;
     background-position: 0px 0px;
     background-repeat: no-repeat;
@@ -1314,5 +1313,5 @@ svg text.icon {
 }
 
 .remove-background {
-    background-image: none;
+    background-image: none !important;
 }

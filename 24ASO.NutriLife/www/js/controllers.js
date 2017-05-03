@@ -95,6 +95,9 @@ angular.module('starter.controllers', [])
 .controller('RefeicoesCtrl', function ($scope, $stateParams, $state) {
 })
 
+.controller('RegistrarCtrl', function ($scope, $stateParams, $state) {
+})
+
 .controller('ModelosAlimentaresCtrl', function($scope){
 
     $scope.modelos = [];
@@ -202,7 +205,7 @@ angular.module('starter.controllers', [])
         nome: "Stevie Moreira",
         crn: "1111-P",
         uf: "ES",
-        imagem: "/img/stevie.jpg",
+        imagem: "img/stevie.jpg",
         pacientes: "19 pacientes"
     };
 
@@ -213,7 +216,7 @@ angular.module('starter.controllers', [])
         crn: "2222-P",
         uf: "ES",
         proprio: true,
-        imagem: "/img/matthew.png",
+        imagem: "img/matthew.png",
         pacientes: "6 pacientes"
     };
 
@@ -223,7 +226,7 @@ angular.module('starter.controllers', [])
         nome: "Molly Willian",
         crn: "3333-P",
         uf: "RJ",
-        imagem: "/img/molly.png",
+        imagem: "img/molly.png",
         pacientes: "32 pacientes"
     };
 
@@ -233,7 +236,7 @@ angular.module('starter.controllers', [])
         nome: "Elyse Jhonson",
         crn: "4444-P",
         uf: "SP",
-        imagem: "/img/elyse.png",
+        imagem: "img/elyse.png",
         pacientes: "17 pacientes"
     };
 
@@ -243,7 +246,7 @@ angular.module('starter.controllers', [])
         nome: "Kristy Simpson",
         crn: "5555-P",
         uf: "SP",
-        imagem: "/img/kristy.png",
+        imagem: "img/kristy.png",
         pacientes: "20 pacientes"
     };
 
