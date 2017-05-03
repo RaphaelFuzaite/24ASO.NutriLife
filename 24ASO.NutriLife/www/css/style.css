@@ -1315,3 +1315,7 @@ svg text.icon {
 .remove-background {
     background-image: none !important;
 }
+
+.full-input .ui.input {
+  width: 100%;
+}

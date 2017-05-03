@@ -113,7 +113,7 @@ angular.module('starter.controllers', [])
             valor: meses[3]
         },
         itens: [
-            { id: 1, mes: 3, nome:"Almoço Bovinus", imagem: "img/almoco-00.jpg", data: new Date(2017, 4, 5, 12), kcal: 450, infos:["80kg Arroz", "200kg Filet de frango", "40kg Batata Frita", "20kg Alface", "20kg Tomate"] },
+            { id: 1, mes: 3, nome:"Almoço Bovinus", imagem: "img/almoco-00.jpg", data: new Date(2017, 4, 5, 12), kcal: 450, infos:["80kg Arroz", "100kg Filet de frango", "100kg Filet de frango", "40kg Batata Frita", "20kg Tomate", "20kg Alface"] },
             { id: 2, mes: 3, nome:"Jantar Manai", imagem: "img/almoco-01.jpg", data: new Date(2017, 4, 5, 19), kcal: 122, infos:["200kg Picanha", "50kg Arroz", "Pimenta", "Brócolis", "Baby cenoura", "Tomate cereja"] },
             { id: 3, mes: 2, nome:"Almoço Bovinus", imagem: "img/almoco-02.jpg", data: new Date(2017, 3, 5, 12), kcal: 269, infos:["80kg Arroz", "200kg Filet de frango", "40kg Batata Frita", "20kg Brócolis", "20kg Tomate"] },
             { id: 4, mes: 2, nome:"Almoço Kilover", imagem: "img/almoco-03.jpg", data: new Date(2017, 3, 5, 12), kcal: 354, infos:["300kg Panqueca de frango"] },
@@ -135,7 +135,91 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('RegistrarCtrl', function ($scope, $stateParams, $state) {
+.controller('RefeicaoRegistradaCtrl', function ($scope, $stateParams, $state, $ionicHistory) {
+
+    $stateParams.refeicaoId = 1;
+
+    var meses = [new Date(2017, 1, 1), new Date(2017, 2, 1), new Date(2017, 3, 1), new Date(2017, 4, 1)]
+
+    $scope.Continuar = function(){
+
+        $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go("app.refeicoes", {}, { location: "replace", reload: true });
+    }
+
+    $scope.refeicoes = {
+        mesAtual: {
+            avancar: function () {
+                if ($scope.refeicoes.mesAtual.indice == 3) {
+                    return false;
+                }
+                $scope.refeicoes.mesAtual.indice++;
+                $scope.refeicoes.mesAtual.valor = meses[$scope.refeicoes.mesAtual.indice];
+            },
+            voltar: function () {
+                if ($scope.refeicoes.mesAtual.indice == 0) {
+                    return false;
+                }
+                $scope.refeicoes.mesAtual.indice--;
+                $scope.refeicoes.mesAtual.valor = meses[$scope.refeicoes.mesAtual.indice];
+            },
+            indice: 3,
+            valor: meses[3]
+        },
+        itens: [
+            { id: 1, mes: 3, nome:"Almoço Bovinus", imagem: "img/almoco-00.jpg", data: new Date(2017, 4, 5, 12), kcal: 450, infos:["01 - 80kg Arroz", "02 - 100kg Filet de frango", "03 - 100kg Filet de frango", "04 - 40kg Batata Frita", "05 - 20kg Tomate", "06 - 20kg Alface"] },
+            { id: 2, mes: 3, nome:"Jantar Manai", imagem: "img/almoco-01.jpg", data: new Date(2017, 4, 5, 19), kcal: 122, infos:["200kg Picanha", "50kg Arroz", "Pimenta", "Brócolis", "Baby cenoura", "Tomate cereja"] },
+            { id: 3, mes: 2, nome:"Almoço Bovinus", imagem: "img/almoco-02.jpg", data: new Date(2017, 3, 5, 12), kcal: 269, infos:["80kg Arroz", "200kg Filet de frango", "40kg Batata Frita", "20kg Brócolis", "20kg Tomate"] },
+            { id: 4, mes: 2, nome:"Almoço Kilover", imagem: "img/almoco-03.jpg", data: new Date(2017, 3, 5, 12), kcal: 354, infos:["300kg Panqueca de frango"] },
+            { id: 5, mes: 1, nome:"Jantar Super Pizza Pan", imagem: "img/almoco-05.jpg", data: new Date(2017, 2, 5, 19), kcal: 976, infos:["Pizza mussarela"] },
+            { id: 6, mes: 0, nome:"Almoço Kilover", imagem: "img/almoco-04.jpg", data: new Date(2017, 1, 5, 12), kcal: 127, infos:["100kg Filet de frango", "Ervilha", "Cenoura", "Batata"] },
+            { id: 7, mes: 0, nome:"Almoço Alecrim", imagem: "img/almoco-06.jpg", data: new Date(2017, 1, 5, 12), kcal: 338, infos:["100kg Filet de frango", "Couve flor", "Cenoura", "Brócolis", "Pepino"] }
+        ]
+    };
+
+    $scope.detalhes = function (id) {
+        $state.go("app.refeicao", { "refeicaoId": id });
+    };
+
+    if($stateParams.refeicaoId)
+    {
+        $scope.refeicao = $scope.refeicoes.itens.filter(function(t){ return t.id == $stateParams.refeicaoId})[0];
+        $('.ui.rating').rating({ maxRating: 5, initialRating: 4 });
+    }
+
+})
+
+.controller('RegistrarCtrl', function ($scope, $stateParams, $state, $cordovaCamera) {
+
+
+    document.addEventListener("deviceready", function () {
+
+        $scope.TirarFoto = function(){
+            var options = {
+                quality: 80,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.CAMERA,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 250,
+                targetHeight: 250,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false
+            };
+            
+            $cordovaCamera.getPicture(options).then(function(imageData) {
+                $scope.srcImage = "data:image/jpeg;base64," + imageData;
+            }, function(err) {
+
+            });
+        }
+
+        $scope.TirarFoto();
+
+    }, false);
+
 })
 
 .controller('ModelosAlimentaresCtrl', function($scope){

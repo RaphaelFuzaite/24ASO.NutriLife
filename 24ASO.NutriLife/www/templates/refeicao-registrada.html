@@ -1,0 +1,52 @@
+<ion-view view-title="Refeição Registrada">
+    <ion-content class="padding full-input">
+
+        <div class="ui card">
+            <div class="image">
+                <img src="img/almoco-escaneado-00.jpg">
+            </div>
+            <div class="content">
+                <div class="ui stacked">
+                    <div class="field">
+                        <label>Local da refeição</label>
+                        <div class="ui input">
+                            <input type="text" name="local" value="Almoço Manai" placeholder="Local"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="ui stacked">                    
+                    <div class="field">
+                        <label>Calorias</label>
+                        <div class="ui input">
+                            <input type="text" name="kcal" placeholder="Calorias" value="230 kcal"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui raised segments">
+            <div class="ui segment">
+                <h4>Composição</h4>
+            </div>
+            <div class="ui segment" ng-repeat="info in refeicao.infos track by $index">
+                <h5>
+                    <div class="field">
+                        <div class="ui input">
+                            <input type="text" name="composicao" placeholder="composicao" value="{{ info }}" />
+                        </div>
+                    </div>
+                </h5>
+            </div>
+        </div>
+
+        <div class="ui">
+            <div class="title">
+                <button class="button button-full button-balanced bg-vermelho font-branco" ng-click="Continuar()">Continuar</button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
