@@ -37,6 +37,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             }
         }
     })
+    .state('app.cadastro', {
+        url: '/cadastro',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/cadastro.html',
+                controller: 'CadastroCtrl'
+            }
+        }
+    })
     .state('app.inicio', {
         url: '/inicio',
         views: {

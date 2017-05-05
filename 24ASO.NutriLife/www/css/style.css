@@ -1319,3 +1319,7 @@ svg text.icon {
 .full-input .ui.input {
   width: 100%;
 }
+
+.platform-android .bar .title {
+  font-size: 22px;
+}

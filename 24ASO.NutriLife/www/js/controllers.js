@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, $ionicModal, $ionicHistory, $timeout, $state) {
+.controller('AppCtrl', function ($scope, $ionicModal, $ionicHistory, $timeout, $state, $ionicPopup) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.loginData = {
-        username: "raphaelfuzaite@gmail.com",
+        username: "raphael.fuzaite",
         password: "123456"
     }
 
@@ -39,6 +39,12 @@ angular.module('starter.controllers', [])
         $scope.loginData.authenticated = true;
         // Simulate a login delay. Remove this and replace with your login
         // code if using a login system
+
+        var alertPopup = $ionicPopup.alert({
+            title: 'Acesso concedido',
+            template: 'Bem-vindo ' + $scope.loginData.username
+        });
+
         $timeout(function () {
             $ionicHistory.nextViewOptions({
                 disableBack: true
@@ -89,7 +95,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('RefeicoesCtrl', function ($scope, $stateParams, $state) {
+.controller('RefeicoesCtrl', function ($scope, $stateParams, $state, $ionicPopup) {
 
     var meses = [new Date(2017, 1, 1), new Date(2017, 2, 1), new Date(2017, 3, 1), new Date(2017, 4, 1)]
 
@@ -131,6 +137,13 @@ angular.module('starter.controllers', [])
     {
         $scope.refeicao = $scope.refeicoes.itens.filter(function(t){ return t.id == $stateParams.refeicaoId})[0];
         $('.ui.rating').rating({ maxRating: 5, initialRating: 4 });
+    }
+
+    $scope.compartilhar = function(titulo){
+        var alertPopup = $ionicPopup.alert({
+            title: 'Compartilhar',
+            template: 'Refeição compartilhada no '+titulo
+        });
     }
 
 })
@@ -322,6 +335,32 @@ angular.module('starter.controllers', [])
 .controller('RecomendacoesCtrl', function(){
     
     $('#copo-de-agua').progress();
+
+})
+.controller('CadastroCtrl', function($scope, $state, $ionicPopup, $timeout, $ionicHistory){
+    
+    $scope.cadastro = {
+        nome: 'Raphael Fuzaite',
+        nomeDeUsuario: 'raphael.fuzaite',
+        senha: 123456,
+        email: 'raphaelfuzaite@gmail.com'
+    };
+
+    $scope.Cadastrar = function(){
+
+        var alertPopup = $ionicPopup.alert({
+            title: 'Cadastro concluído',
+            template: 'Bem-vindo ' + $scope.cadastro.nome
+        });
+
+        $timeout(function () {
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go("app.inicio", {}, { location: "replace", reload: true });
+        }, 1000);
+
+    };
 
 })
 .controller('NutricionistasCtrl', function($scope, $state, $stateParams, $timeout){

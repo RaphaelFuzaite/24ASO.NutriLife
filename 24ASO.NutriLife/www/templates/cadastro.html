@@ -7,27 +7,39 @@
                         <h2 class="ui teal header brand-logo">
                             <img src="img/logo.png">
                         </h2>
-                        <form ng-submit="doLogin()" class="ui large form">
+                        <form ng-submit="Cadastrar()" class="ui large form">
                             <div class="ui stacked">
                                 <div class="field">
                                     <div class="ui left icon input">
                                         <i class="user icon"></i>
-                                        <input type="text" name="email" ng-model="loginData.username" placeholder="E-mail">
+                                        <input type="text" name="text" ng-model="cadastro.nome" placeholder="Nome">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui left icon input">
+                                        <i class="at icon"></i>
+                                        <input type="text" name="email" ng-model="cadastro.email" placeholder="E-mail">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui left icon input">
+                                        <i class="browser icon"></i>
+                                        <input type="text" name="text" ng-model="cadastro.nomeDeUsuario" placeholder="Nome de usuário">
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui left icon input">
                                         <i class="lock icon"></i>
-                                        <input type="password" name="password" ng-model="loginData.password" placeholder="Senha">
+                                        <input type="password" name="password" ng-model="cadastro.senha" placeholder="Senha">
                                     </div>
                                 </div>
-                                <button class="ui fluid large bg-vermelho font-branco submit button" type="submit">Acessar</button>
+                                <button class="ui fluid large bg-vermelho font-branco submit button" type="submit">Cadastrar</button>
                             </div>
                             <div class="ui error message"></div>
                         </form>
 
                         <div class="ui message">
-                            Novo por aqui? <a href="#/app/cadastro">Cadastre-se</a>
+                            Já possui cadastro? <a href="#/app/login">Login</a>
                         </div>
                     </div>
                 </div>
